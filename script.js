@@ -6,8 +6,8 @@ let allKeys = [],
 audio = new Audio(`tunes/a.wav`); // by default, audio src is "a" tune
 
 const playTune = (key) => {
-    audio.src = `tunes/${key}.wav`; // passing audio src based on key pressed 
-    audio.play(); // playing audio
+    const audio = new Audio(`tunes/${key}.wav`); // create a new audio object for each keypress
+    audio.play();
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`); // getting clicked key element
     clickedKey.classList.add("active"); // adding active class to the clicked key element
@@ -15,6 +15,7 @@ const playTune = (key) => {
         clickedKey.classList.remove("active");
     }, 150);
 }
+
 
 pianoKeys.forEach(key => {
     allKeys.push(key.dataset.key); // adding data-key value to the allKeys array
